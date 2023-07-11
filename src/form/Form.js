@@ -62,7 +62,6 @@ margin-bottom: 15px;
 `
 
 function Form() {
-    const requiredTrue = (!'checkbox')? 'hidden': '';
     const {register, handleSubmit, formState: {errors}, reset} = useForm()
     function submitData(data) {
         console.log(data);
