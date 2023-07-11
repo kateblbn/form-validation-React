@@ -1,14 +1,16 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import { styled } from 'styled-components';
-import './css.css'
+import './css.css';
+import back from '../img/background.jpg';
 
 const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin: 50px 0;
+    height: 100vh;
+    padding: 50px 0;
 `
 const Wrapper = styled.div`
     display: flex;
@@ -16,6 +18,7 @@ const Wrapper = styled.div`
     .margin {
         padding: 0 5px;
         margin-bottom: 15px;
+        background-color: transparent;
         border: none;
         border-bottom: 2px solid black;
         width: 100%;
@@ -44,6 +47,9 @@ const Wrapper = styled.div`
                 margin-bottom: 15px;
             }
         }
+        .redBottom {
+            border-bottom: 2px solid red;
+        }
         .block {
             display: block;
         }
@@ -64,19 +70,27 @@ const Button = styled.button`
     background-color: rgb(103, 173, 659);
     margin-bottom: 15px;
     &:hover {
-        background-color: rgb(103, 173, 59);
-        transition: 0.5s all;
+        background-color: rgb(146 186 232);
+        transition: 1s all;
     }
 `
 
 function Form() {
+    // const warn = 
     const {register, handleSubmit, formState: {errors}, reset} = useForm()
     function submitData(data) {
         console.log(data);
         reset();
     }
   return (
-    <Container >
+    <Container style={ {
+                        background: `url(${back})`,
+                        width: '100%',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat',
+                        height: '100vh'
+
+    }} >
         
         <div>
             <h1>Creative SignUp Form</h1>
