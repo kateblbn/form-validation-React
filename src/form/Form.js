@@ -8,33 +8,41 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-top: 50px;
+    margin: 50px 0;
 `
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     .margin {
+        padding: 0 5px;
         margin-bottom: 15px;
         border: none;
         border-bottom: 2px solid black;
         width: 100%;
-        height: 35px;
+        height: 50px;
         &:focus {
             outline: none;
             border-bottom: 2px solid blue;
             transition: 0.5s all;
         }
+        &::placeholder {
+            font-size: 20px;
+        }
     }
     .formData {
         display: flex;
         flex-direction: column;
+        width: 395px;
         .check {
             width: 15px;
             height: 15px;
+            margin-right: 15px;
         }
         .red {
             color: red;
-            margin-bottom: 15px;
+            &:nth-child(8), &:nth-child(10) {
+                margin-bottom: 15px;
+            }
         }
         .block {
             display: block;
@@ -44,21 +52,21 @@ const Wrapper = styled.div`
 const CheckBoxStyle = styled.div`
     display: flex;
     margin-bottom: 15px;
-font-size: 14px;
-justify-content: space-between;
-align-items: center;
+    font-size: 14px;
+    align-items: center;
 `
 const Button = styled.button`
-width: 100%;
-height: 25px;
-border-radius: 5px;
-border: none;
-background-color: rgb(103, 173, 659);
-margin-bottom: 15px;
-&:hover {
-    background-color: rgb(103, 173, 59);
-    transition: 0.5s all;
-}
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(103, 173, 659);
+    margin-bottom: 15px;
+    &:hover {
+        background-color: rgb(103, 173, 59);
+        transition: 0.5s all;
+    }
 `
 
 function Form() {
@@ -68,7 +76,8 @@ function Form() {
         reset();
     }
   return (
-    <Container>
+    <Container >
+        
         <div>
             <h1>Creative SignUp Form</h1>
         </div>
@@ -80,14 +89,14 @@ function Form() {
             {errors.email && <p className='red'>{errors.email.message}</p>}
             <input className='margin' type='password' placeholder='Password' {...register('password', {required: 'Create strong password', minLength: {value: 8, message: 'Min length 8 symbols'}})}/>
             {errors.password && <p className='red'>{errors.password.message}</p>}
-            <input className='margin' type='confPassword' placeholder='Confirm Password' {...register('confPassword', {required: 'Confirm your password', minLength: {value: 8, message: 'Min length 8 symbols'}})}/>
+            <input className='margin' type='password' placeholder='Confirm Password' {...register('confPassword', {required: 'Confirm your password', minLength: {value: 8, message: 'Min length 8 symbols'}})}/>
             {errors.confPassword && <p className='red'>{errors.confPassword.message}</p>}
             <CheckBoxStyle>
             <input className='check' type='checkbox' {...register('checkbox', {required: "Please agree with Terms & Conditions"})}/>
-            {errors.checkbox && <p className='red block'>{errors.checkbox.message}</p>}
             <p>I Agree to the Terms & Conditions</p>
-
             </CheckBoxStyle>
+            {errors.checkbox && <p className='red block'>{errors.checkbox.message}</p>}
+
             <Button>SIGNUP</Button>
             </form>
             <p> Already have Account? <a href='/'>Login now</a>
@@ -97,4 +106,4 @@ function Form() {
   )
 }
 
-export default Form
+export default Form;
